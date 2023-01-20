@@ -1,15 +1,16 @@
 package task;
 
 public class Task {
+    private int id;
     private String name;
     private String description;
-    private int id;
+
     private Status status;
 
-    public Task(String name, String description, int id, Status status) {
+    public Task(int id, String name, String description, Status status) {
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.id = id;
         this.status = status;
     }
 
