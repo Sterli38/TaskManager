@@ -1,11 +1,13 @@
 package task;
 
+import manager.Manager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InManager {
+public class InManager implements Manager {
     private final Map<Integer, Task> tasks = new HashMap<>();
     private final Map<Integer, Epic> epics = new HashMap<>();
     private final Map<Integer, SubTask> subTasks = new HashMap<>();
@@ -61,9 +63,20 @@ public class InManager {
         epics.put(epic.getId(), epic);
     }
 
-//    public void updateEpic(Epic epic) {
-//
-//    }
+    public void updateEpic(Epic epic) {
+        if(epic == null) {
+            System.out.println("Epic can not be updated, Epic equals null");
+            return;
+        }
+        Epic epicForUpdate = epics.get(epic.getId());
+        if(epicForUpdate == null) {
+            System.out.println("Epic can not be updated, no Epic with this id");
+            return;
+        }
+        epicForUpdate.setName(epic.getName() == null ? epicForUpdate.getName() : epic.getName());
+        epicForUpdate.setDescription(epic.getDescription() == null ? epicForUpdate.getDescription() : epic.getDescription());
+        epicForUpdate.setStatus(epic.getStatus() == null ? epicForUpdate.getStatus() : epic.getStatus());
+    }
 
     public void removeEpic(int id) {
         epics.remove(id);
@@ -85,9 +98,20 @@ public class InManager {
         subTasks.put(subtask.getId(), subtask);
     }
 
-//    public void updateSubtask(Subtask subtask) {
-//
-//    }
+    public void updateSubtask(SubTask subtask) {
+        if(subtask == null) {
+            System.out.println("Epic can not be updated, Epic equals null");
+            return;
+        }
+        SubTask subtaskForUpdate = subTasks.get(subtask.getId());
+        if(subtaskForUpdate == null) {
+            System.out.println("Epic can not be updated, no Epic with this id");
+            return;
+        }
+        subtaskForUpdate.setName(subtask.getName() == null ? subtaskForUpdate.getName() : subtask.getName());
+        subtaskForUpdate.setDescription(subtask.getDescription() == null ? subtaskForUpdate.getDescription() : subtask.getDescription());
+        subtaskForUpdate.setStatus(subtask.getStatus() == null ? subtaskForUpdate.getStatus() : subtask.getStatus());
+    }
 
     public void removeSubtask(int id) {
         subTasks.remove(id);
