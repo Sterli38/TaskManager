@@ -7,43 +7,43 @@ import task.Task;
 import java.util.List;
 
 public interface Manager {
-    public List<Task> getTasks();
+    List<Task> getTasks();
 
-    public void removeAllTasks();
+    void removeAllTasks();
 
-    public Task getTask(int id);
+    Task getTask(int id);
 
-    public void taskCreation(Task task);
+    void taskCreation(Task task);
 
-    public void updateTask(Task task);
+    void updateTask(Task task);
 
-    public void removeTask(int id);
+    void removeTask(int id);
 
-    public List<Epic> getEpics();
+    List<Epic> getEpics();
 
-    public void removeAllEpics();
+    void removeAllEpics();
 
-    public Epic getEpic(int id);
+    Epic getEpic(int id);
 
-    public void epicCreation(Epic epic);
+    void epicCreation(Epic epic);
 
-    public void updateEpic(Epic epic);
+    void updateEpic(Epic epic);
 
-    public void removeEpic(int id);
+    void removeEpic(int id);
 
-    public List<SubTask> getSubtasks();
+    List<SubTask> getSubtasks();
 
-    public void removeAllSubtasks();
+    void removeAllSubtasks();
 
-    public SubTask getSubtask(int id);
+    SubTask getSubtask(int id);
 
-    public void subTaskCreation(SubTask subtask);
+    void subTaskCreation(SubTask subtask);
 
-    public void updateSubtask(SubTask subTask);
+    void updateSubtask(SubTask subTask);
 
-    public void removeSubtask(int id);
+    void removeSubtask(int id);
 
-    public List<SubTask> getAllTheEpicSubtasks(Epic epic);
+    List<SubTask> getAllTheEpicSubtasks(Epic epic);
 
-    public void deleteAllTasks();
+    void deleteAllTasks();
 }
