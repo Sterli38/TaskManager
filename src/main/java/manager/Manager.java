@@ -11,37 +11,37 @@ public interface Manager {
 
     void removeAllTasks();
 
-    Task getTask(int id);
+    Task getTaskById(int id);
 
-    void taskCreation(Task task);
+    void createTask(Task task);
 
     void updateTask(Task task);
 
-    void removeTask(int id);
+    void removeTaskById(int id);
 
-    List<Epic> getEpics();
+    List<Epic> getAllEpics();
 
     void removeAllEpics();
 
     Epic getEpic(int id);
 
-    void epicCreation(Epic epic);
+    void createEpic(Epic epic);
 
     void updateEpic(Epic epic);
 
-    void removeEpic(int id);
+    void removeEpicById(int id);
 
     List<SubTask> getSubtasks();
 
     void removeAllSubtasks();
 
-    SubTask getSubtask(int id);
+    SubTask getSubtaskById(int id);
 
-    void subTaskCreation(SubTask subtask);
+    void createSubtask(SubTask subtask);
 
     void updateSubtask(SubTask subTask);
 
-    void removeSubtask(int id);
+    void removeSubtaskById(int id);
 
     List<SubTask> getAllTheEpicSubtasks(Epic epic);
 
