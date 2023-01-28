@@ -37,7 +37,7 @@ public interface Manager {
 
     SubTask getSubtaskById(int id);
 
-    void createSubtask(SubTask subtask);
+    void createSubtask(SubTask subtask, int epicId);
 
     void updateSubtask(SubTask subTask);
 
