@@ -18,11 +18,11 @@ public class Main {
 //        System.out.println(manager.getTasks());
 //        System.out.println("======");
 
-        SubTask subTask = new SubTask("Поездка" , "В грузию" , 1 , Status.DONE);
-        SubTask subTask1 = new SubTask("Поездка" , "В Германию" , 2 , Status.NEW);
-        SubTask subTask2 = new SubTask("Поездка" , "В Армению" , 3 , Status.DONE);
+        SubTask subTask = new SubTask(1, "В грузию" , "Поездка", Status.DONE);
+        SubTask subTask1 = new SubTask(2, "В Германию" , "Поездка", Status.NEW);
+        SubTask subTask2 = new SubTask(3, "В Армению" , "Поездка", Status.DONE);
 
-        Epic epic = new Epic("Планы", "На Февраль" , 1);
+        Epic epic = new Epic(1, "На Февраль" , "Планы");
         epic.addSubtask(subTask);
         epic.addSubtask(subTask1);
         epic.addSubtask(subTask2);

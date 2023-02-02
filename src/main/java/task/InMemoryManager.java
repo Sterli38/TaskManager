@@ -47,15 +47,14 @@ public class InMemoryManager implements Manager {
         tasks.remove(id);
     }
 
-    public List<Epic> getAllEpics() {
+    public List<Epic> getEpics() {
         return new ArrayList<>(epics.values());
     }
 
     public void removeAllEpics() {
         epics.clear();
     }
-
-    public Epic getEpic(int id) {
+    public Epic getEpicById(int id) {
         return epics.get(id);
     }
 

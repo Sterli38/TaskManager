@@ -19,11 +19,11 @@ public interface Manager {
 
     void removeTaskById(int id);
 
-    List<Epic> getAllEpics();
+    List<Epic> getEpics();
 
     void removeAllEpics();
 
-    Epic getEpic(int id);
+    Epic getEpicById(int id);
 
     void createEpic(Epic epic);
 
