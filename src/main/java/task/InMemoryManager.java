@@ -74,7 +74,6 @@ public class InMemoryManager implements Manager {
         }
         epicForUpdate.setName(epic.getName() == null ? epicForUpdate.getName() : epic.getName());
         epicForUpdate.setDescription(epic.getDescription() == null ? epicForUpdate.getDescription() : epic.getDescription());
-        epicForUpdate.setStatus(epic.getStatus() == null ? epicForUpdate.getStatus() : epic.getStatus());
     }
 
     public void removeEpicById(int id) {
