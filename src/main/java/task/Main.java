@@ -1,5 +1,8 @@
 package task;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         InMemoryManager manager = new InMemoryManager();
@@ -28,6 +31,11 @@ public class Main {
         epic.addSubtask(subTask2);
 
         System.out.println(epic.getStatus());
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        System.out.println(list);
+
 
     }
 }
