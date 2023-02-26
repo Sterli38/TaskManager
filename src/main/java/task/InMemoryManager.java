@@ -96,7 +96,7 @@ public class InMemoryManager implements Manager {
         Epic epic = epics.get(epicId);
         if(epic != null) {
             subTasks.put(subtask.getId(), subtask);
-            epic.addSubtask(subtask);
+            subtask.setEpicId(epicId);
         } else {
             throw new RuntimeException("Epic was not found");
         }
@@ -104,17 +104,18 @@ public class InMemoryManager implements Manager {
 
     public void updateSubtask(SubTask subtask) {
         if(subtask == null) {
-            System.out.println("Epic can not be updated, Epic equals null");
+            System.out.println("SubTask can not be updated, SubTask equals null");
             return;
         }
         SubTask subtaskForUpdate = subTasks.get(subtask.getId());
         if(subtaskForUpdate == null) {
-            System.out.println("Epic can not be updated, no Epic with this id");
+            System.out.println("SubTask can not be updated, no SubTask with this id");
             return;
         }
         subtaskForUpdate.setName(subtask.getName() == null ? subtaskForUpdate.getName() : subtask.getName());
         subtaskForUpdate.setDescription(subtask.getDescription() == null ? subtaskForUpdate.getDescription() : subtask.getDescription());
         subtaskForUpdate.setStatus(subtask.getStatus() == null ? subtaskForUpdate.getStatus() : subtask.getStatus());
+        subtaskForUpdate.setEpicId(subtask.getEpicId() == 0 ? subtaskForUpdate.getEpicId() : subtask.getEpicId());
     }
 
     public void removeSubtaskById(int id) {
