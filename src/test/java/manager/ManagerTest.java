@@ -133,9 +133,7 @@ public abstract class ManagerTest<T extends Manager> {
     void addSubtasksToEpicTest() {
         List<SubTask> epics = new ArrayList<>();
         SubTask testSubtask = new SubTask(11, "Новая подзадача", "Новая подзадача эпика", Status.NEW);
-//        System.out.println(manager.getEpicById(5).getSubtasksList());
-        epicSubtasks.addSubtask(testSubtask);
-//        System.out.println(manager.getEpicById(5).getSubtasksList());
+        manager.addSubtask(5, testSubtask);
         epics.add(subTaskForEpic);
         epics.add(testSubtask);
         Assertions.assertEquals(epics, manager.getEpicById(5).getSubtasksList());

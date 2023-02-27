@@ -92,6 +92,11 @@ public class InMemoryManager implements Manager {
         return subTasks.get(id);
     }
 
+    public void addSubtask(int epicId, SubTask subTask) {
+        Epic epic = getEpicById(epicId);
+        epic.addSubtask(subTask);
+    }
+
     public void createSubtask(SubTask subtask, int epicId) {
         Epic epic = epics.get(epicId);
         if(epic != null) {

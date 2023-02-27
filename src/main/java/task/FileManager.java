@@ -241,6 +241,33 @@ public class FileManager implements Manager {
         return subTasks;
     }
 
+    public void addSubtask(int epicId, SubTask subTask) {
+        createSubtask(subTask, epicId);
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(path + FileNames.EPIC_NAME))) {
+                try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path + "Epic.buffer"))) {
+                    String line;
+                    Epic currentEpic;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        currentEpic = buildEpic(line);
+                        if (currentEpic.getId() == epicId) {
+                            currentEpic.addSubtask(subTask);
+                        }
+                        String stringSubtasks = currentEpic.getSubtasksList().stream()
+                                .map(i -> String.valueOf(i.getId()))
+                                .collect(Collectors.joining(","));
+                        bufferedWriter.write(currentEpic.getId() + "," + currentEpic.getName() + "," + currentEpic.getDescription() + ":" + stringSubtasks);
+                        bufferedWriter.newLine();
+                    }
+                }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        File file = new File(path + FileNames.EPIC_NAME);
+        File bufferFile = new File(path + "Epic.buffer");
+        file.delete();
+        bufferFile.renameTo(file);
+    }
+
     @Override
     public void removeAllSubtasks() {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path + FileNames.SUBTASK_NAME))) {
