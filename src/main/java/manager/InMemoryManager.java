@@ -1,6 +1,9 @@
-package task;
+package manager;
 
 import manager.Manager;
+import task.Epic;
+import task.SubTask;
+import task.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,15 +50,14 @@ public class InMemoryManager implements Manager {
         tasks.remove(id);
     }
 
-    public List<Epic> getAllEpics() {
+    public List<Epic> getEpics() {
         return new ArrayList<>(epics.values());
     }
 
     public void removeAllEpics() {
         epics.clear();
     }
-
-    public Epic getEpic(int id) {
+    public Epic getEpicById(int id) {
         return epics.get(id);
     }
 
@@ -75,7 +77,6 @@ public class InMemoryManager implements Manager {
         }
         epicForUpdate.setName(epic.getName() == null ? epicForUpdate.getName() : epic.getName());
         epicForUpdate.setDescription(epic.getDescription() == null ? epicForUpdate.getDescription() : epic.getDescription());
-        epicForUpdate.setStatus(epic.getStatus() == null ? epicForUpdate.getStatus() : epic.getStatus());
     }
 
     public void removeEpicById(int id) {
@@ -94,11 +95,16 @@ public class InMemoryManager implements Manager {
         return subTasks.get(id);
     }
 
+    public void addSubtask(int epicId, SubTask subTask) {
+        Epic epic = getEpicById(epicId);
+        epic.addSubtask(subTask);
+    }
+
     public void createSubtask(SubTask subtask, int epicId) {
         Epic epic = epics.get(epicId);
         if(epic != null) {
             subTasks.put(subtask.getId(), subtask);
-            epic.addSubtask(subtask);
+            subtask.setEpicId(epicId);
         } else {
             throw new RuntimeException("Epic was not found");
         }
@@ -106,17 +112,18 @@ public class InMemoryManager implements Manager {
 
     public void updateSubtask(SubTask subtask) {
         if(subtask == null) {
-            System.out.println("Epic can not be updated, Epic equals null");
+            System.out.println("SubTask can not be updated, SubTask equals null");
             return;
         }
         SubTask subtaskForUpdate = subTasks.get(subtask.getId());
         if(subtaskForUpdate == null) {
-            System.out.println("Epic can not be updated, no Epic with this id");
+            System.out.println("SubTask can not be updated, no SubTask with this id");
             return;
         }
         subtaskForUpdate.setName(subtask.getName() == null ? subtaskForUpdate.getName() : subtask.getName());
         subtaskForUpdate.setDescription(subtask.getDescription() == null ? subtaskForUpdate.getDescription() : subtask.getDescription());
         subtaskForUpdate.setStatus(subtask.getStatus() == null ? subtaskForUpdate.getStatus() : subtask.getStatus());
+        subtaskForUpdate.setEpicId(subtask.getEpicId() == 0 ? subtaskForUpdate.getEpicId() : subtask.getEpicId());
     }
 
     public void removeSubtaskById(int id) {
