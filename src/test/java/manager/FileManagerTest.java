@@ -1,6 +1,4 @@
-package task;
-
-import manager.ManagerTest;
+package manager;
 
 public class FileManagerTest extends ManagerTest<FileManager> {
     public FileManagerTest() {

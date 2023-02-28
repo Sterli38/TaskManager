@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EpicTest {
 
     @Test
-    void addSubtask() {
+    void addSubtaskTest() {
         Epic epic = new Epic(3, "Поездка" , "Главная задача");
         SubTask subTask = new SubTask(4, "В Германию" , "Подзадача" , Status.NEW);
         epic.addSubtask(subTask);
@@ -20,7 +20,7 @@ class EpicTest {
     }
 
     @Test
-    void getStatusInProgress() {
+    void getStatusInProgressTest() {
         Epic epic = new Epic(3, "Поездка" , "Главная задача");
         SubTask subTask = new SubTask(4, "В Германию" , "Подзадача", Status.NEW);
         SubTask subTask2 = new SubTask(2, "В Армению" , "Подзадача", Status.NEW);
@@ -33,7 +33,7 @@ class EpicTest {
     }
 
     @Test
-    void getStatusDone() {
+    void getStatusDoneTest() {
         Epic epic = new Epic(3 , "Поездка" , "Главная задача");
         SubTask subTask4 = new SubTask(4, "В Германию" , "Подзадача", Status.DONE);
         SubTask subTask5 = new SubTask(2, "В Армению" , "Подзадача", Status.DONE);
@@ -46,7 +46,7 @@ class EpicTest {
     }
 
     @Test
-    void getStatusNew() {
+    void getStatusNewTest() {
         Epic epic = new Epic(3 , "Поездка" , "Главная задача");
         SubTask subTask4 = new SubTask(4, "В Германию" , "Подзадача", Status.NEW);
         SubTask subTask5 = new SubTask(2, "В Армению" , "Подзадача", Status.NEW);

@@ -1,4 +1,9 @@
-package task;
+package org.example;
+
+import manager.InMemoryManager;
+import task.Epic;
+import task.Status;
+import task.SubTask;
 
 import java.util.ArrayList;
 import java.util.List;

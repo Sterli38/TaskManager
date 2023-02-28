@@ -1,6 +1,11 @@
-package task;
+package manager;
 
+import manager.FileNames;
 import manager.Manager;
+import task.Epic;
+import task.Status;
+import task.SubTask;
+import task.Task;
 
 import java.io.*;
 import java.util.*;

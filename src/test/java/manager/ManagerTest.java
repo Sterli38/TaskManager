@@ -45,25 +45,25 @@ public abstract class ManagerTest<T extends Manager> {
     }
 
     @Test
-    void getTasks() {
+    void getTasksTest() {
         List<Task> tasks = new ArrayList<>();
         tasks.add(task);
         Assertions.assertEquals(tasks, manager.getTasks());
     }
 
     @Test
-    void removeAllTasks() {
+    void removeAllTasksTest() {
         manager.removeAllTasks();
         Assertions.assertEquals(0, manager.getTasks().size());
     }
 
     @Test
-    void getTaskById() {
+    void getTaskByIdTest() {
         Assertions.assertEquals(task, manager.getTaskById(1));
     }
 
     @Test
-    void createTask() {
+    void createTaskTest() {
         List<Task> tasks = new ArrayList<>();
         tasks.add(task);
         tasks.add(new Task(10, "Новая созданная задача", "Новая созданная задача", Status.NEW));
@@ -72,20 +72,20 @@ public abstract class ManagerTest<T extends Manager> {
     }
 
     @Test
-    void updateTask() {
+    void updateTaskTest() {
         Task updateTask = new Task(1, "Новая задача", "Новое Описание", Status.NEW);
         manager.updateTask(updateTask);
         Assertions.assertEquals(updateTask, manager.getTaskById(1));
     }
 
     @Test
-    void removeTaskById() {
+    void removeTaskByIdTest() {
         manager.removeTaskById(1);
         Assertions.assertEquals(0, manager.getTasks().size()); // Ожидается 0, так как создана только одна задача
     }
 
     @Test
-    void getEpics() {
+    void getEpicsTest() {
         List<Epic> epics = new ArrayList<>();
         epics.add(epic);
         epics.add(epicSubtasks);
@@ -93,18 +93,18 @@ public abstract class ManagerTest<T extends Manager> {
     }
 
     @Test
-    void removeAllEpics() {
+    void removeAllEpicsTest() {
         manager.removeAllEpics();
         Assertions.assertEquals(0, manager.getEpics().size());
     }
 
     @Test
-    void getEpicById() {
+    void getEpicByIdTest() {
         Assertions.assertEquals(epicSubtasks, manager.getEpicById(5));
     }
 
     @Test
-    void createEpic() {
+    void createEpicTest() {
         List<Epic> epics = new ArrayList<>();
         Epic testEpic = new Epic(15, "Тестовый эпик", "Эпик для теста");
         testEpic.addSubtask(subTask);
@@ -117,14 +117,14 @@ public abstract class ManagerTest<T extends Manager> {
     }
 
     @Test
-    void updateEpic() {
+    void updateEpicTest() {
         Epic epic1 = new Epic(2, "Новый эпик", "Новое Описание эпика");
         manager.updateEpic(epic1);
         Assertions.assertEquals(epic1, manager.getEpicById(2));
     }
 
     @Test
-    void removeEpicById() {
+    void removeEpicByIdTest() {
         manager.removeEpicById(2);
         Assertions.assertEquals(1, manager.getEpics().size());
     }
@@ -140,7 +140,7 @@ public abstract class ManagerTest<T extends Manager> {
     }
 
     @Test
-    void getSubtasks() {
+    void getSubtasksTest() {
         List<SubTask> subtasks = new ArrayList<>();
         subtasks.add(subTask);
         subtasks.add(subTaskForEpic);
@@ -148,18 +148,18 @@ public abstract class ManagerTest<T extends Manager> {
     }
 
     @Test
-    void removeAllSubtasks() {
+    void removeAllSubtasksTest() {
         manager.removeAllSubtasks();
         Assertions.assertEquals(0, manager.getSubtasks().size());
     }
 
     @Test
-    void getSubtaskById() {
+    void getSubtaskByIdTest() {
         Assertions.assertEquals(subTask, manager.getSubtaskById(3));
     }
 
     @Test
-    void createSubtask() {
+    void createSubtaskTest() {
         SubTask testSubtask = new SubTask(10, "Новая задача", "Новая задача", Status.IN_PROGRESS);
         List<SubTask> subTasks = new ArrayList<>();
         subTasks.add(subTask);
@@ -170,7 +170,7 @@ public abstract class ManagerTest<T extends Manager> {
     }
 
     @Test
-    void updateSubtask() {
+    void updateSubtaskTest() {
         SubTask subTask1 = new SubTask(3, "Новая Подзадача", "Новое Описание Подзадачи", Status.NEW);
         subTask1.setEpicId(epic.getId());
         manager.updateSubtask(subTask1);
@@ -178,18 +178,18 @@ public abstract class ManagerTest<T extends Manager> {
     }
 
     @Test
-    void removeSubtaskById() {
+    void removeSubtaskByIdTest() {
         manager.removeSubtaskById(6);
         Assertions.assertEquals(1, manager.getSubtasks().size());
     }
 
     @Test
-    void getAllTheEpicSubtasks() {
+    void getAllTheEpicSubtasksTest() {
         Assertions.assertEquals(epicSubtasks.getSubtasksList(), manager.getAllTheEpicSubtasks(epicSubtasks));
     }
 
     @Test
-    void deleteAllTasks() {
+    void deleteAllTasksTest() {
         manager.deleteAllTasks();
         Assertions.assertEquals(0, manager.getTasks().size());
         Assertions.assertEquals(0, manager.getEpics().size());
